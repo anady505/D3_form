@@ -1,0 +1,75 @@
+ *****************************form***********************
+
+var btn = document.getElementById("saveForm");
+var name=document.getElementById("element_1");
+var email=document.getElementById("element_2");
+var password=document.getElementById("element_3");
+var gender=document.getElementsByName("element_4");
+var sport=document.getElementsByClassName("element checkbox");
+var country=document.getElementById("element_6");
+
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+var passwordformat=/^(?=.*[A-Za-z])[A-Za-z\d]{8,}/i
+btn.addEventListener('click',valid);
+
+
+function valid(e){
+  
+    checked(sport);
+
+    if(name.value===""){
+      alert("the Name is required");
+      e.preventDefault(); 
+      
+    }
+
+    if(!email.value.match(mailformat)){
+      alert("Email is not valid");
+      e.preventDefault();            
+
+     }
+    if(!password.value.match(passwordformat)){
+
+       alert("Password must be 8 chars at least.");
+       e.preventDefault(); 
+      
+    }   
+
+    if(check<2){
+       
+       alert("Please select at least two sports"); 
+       e.preventDefault();     
+       
+      }
+
+    if(!(gender[0].checked||gender[1].checked)){
+       
+       alert("Please select your gender");
+       e.preventDefault();  
+      
+      }
+   
+    if(country.value==""){
+       alert("Please select your country");
+       e.preventDefault();
+ 
+     }
+   if(count===0){
+      alert("Successful Submit");
+      e.preventDefault();
+
+    }
+    
+}
+
+var check=0;
+function checked(sport){  
+  for(i=0;i<sport.length;i++){
+    if(sport[i].checked){
+       check++;
+    }
+  } 
+}
+
+
+
